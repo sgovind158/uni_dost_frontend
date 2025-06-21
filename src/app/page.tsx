@@ -1,19 +1,32 @@
+"use client";
 import Image from "next/image";
 import WhiteLine from "./components/Line/WhiteLine";
+import LogoLoader from "./components/Loder/LogoLoder";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 export default function Home() {
+   const router = useRouter();
+
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      router.push("/waiting");
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [router]);
   return (
     <div className="">
       <div className="relative min-h-[100vh]">
         <Image className="absolute right-0 " src={"/assests/splash/top_img.svg"} alt="UNI DOST Logo" width={250} height={340} />
         <Image className="absolute bottom-0" src={"/assests/splash/bottom_img.svg"} alt="UNI DOST Logo Text" width={250} height={340} />
         <div className="w-full flex justify-center h-[100vh]">
-          <Image
+          {/* <Image
             src={"/assests/splash/uni_logo.svg"}
-            alt="UNI DOST Illustration"
+            alt="Uni DOST Illustration"
             width={98}
             height={98}
-          />
+          /> */}
+          <LogoLoader/>
 
           
         </div>

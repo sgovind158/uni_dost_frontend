@@ -1,0 +1,27 @@
+.phoneInput {
+  & > div {
+    background-color: black;
+    border: 1px solid #dbdbdb;
+    padding: 0px 12px;
+    display: flex;
+    align-items: center;
+    & > button {
+      background-color: black;
+      border: none;
+      &:hover {
+        background-color: black;
+      }
+    }
+  }
+  & > input {
+    width: 100%;
+    padding: 12px !important;
+    background-color: black !important;
+    border: 1px solid #dbdbdb !important;
+    min-height: 48px;
+    color: white !important;
+    &::placeholder {
+      color: #dbdbdb !important;
+    }
+  }
+}

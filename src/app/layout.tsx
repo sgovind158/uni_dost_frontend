@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Toast from "./components/Toast/Toast";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -9,7 +10,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   manifest: "/manifest.json",
-  title: "UNI DOST - For University Students",
+  title: "Uni DOST - For University Students",
   description:
     "A platform designed to connect university students, providing a space for sharing resources, collaborating on projects, and building a supportive community.",
 };
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
+      <body className={`${inter.className} antialiased`}>
+        {children}
+        <Toast />
+      </body>
     </html>
   );
 }
