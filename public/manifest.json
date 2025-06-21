@@ -4,6 +4,11 @@
   "short_name": "UNI Dost",
   "icons": [
     {
+      "src": "/img_74.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
       "src": "/img_192.png",
       "sizes": "192x192",
       "type": "image/png",
