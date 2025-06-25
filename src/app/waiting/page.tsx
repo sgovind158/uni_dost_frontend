@@ -85,7 +85,7 @@ const WaitingPage = () => {
               type="submit"
               className="border border-[#747474] hover:bg-[#747474] text-white px-6 py-3 rounded-full font-semibold cursor-pointer"
             >
-              {loder ? "Loading..." : "Send Message"}
+              {loder ? "Loading..." : "Submit"}
             </button>
           </div>
         </form>
