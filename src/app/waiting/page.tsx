@@ -1,10 +1,10 @@
 "use client";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import CustomInput from "../components/Input/CustomInput";
-import CustomPhoneInput2 from "../components/Input/CustomPhoneInput2";
-import { msg } from "../utils/message";
+import CustomPhoneInput2 from "@/components/Input/CustomPhoneInput2";
 import { PhoneNumberUtil } from "google-libphonenumber";
+import { msg } from "@/utils/message";
+import CustomInput from "@/components/Input/CustomInput";
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 

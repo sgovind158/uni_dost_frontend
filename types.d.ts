@@ -5,3 +5,4 @@ declare module "google-libphonenumber" {
     isValidNumber(phoneNumber: unknown): boolean;
   }
 }
+declare module "daisyui";
