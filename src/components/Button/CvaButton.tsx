@@ -65,7 +65,7 @@ const buttonVariants = cva("flex gap-[4px] items-center ", {
         "flex",
         "justify-center",
       ],
-      backButton: ["bg-transparent"],
+      backButton: ["bg-transparent", "hover:scale-105", "active:scale-95"],
     },
     size: {
       small: ["px-[12px]", "py-[4px]"],
@@ -108,7 +108,7 @@ const CvaButton: React.FC<ButtonProps> = ({
       `${
         disabled || isLoading
           ? "!bg-[gray] cursor-not-allowed flex justify-center gap-[12px]"
-          : ""
+          : "cursor-pointer"
       }`,
       buttonVariants({ intent, size, className })
     )}

@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@ducanh2912/next-pwa": "^10.2.9",
+    "@reduxjs/toolkit": "^2.8.2",
+    "axios": "^1.10.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "daisyui": "^5.0.43",
+    "formik": "^2.4.6",
     "google-libphonenumber": "^3.2.42",
     "html-react-parser": "^5.2.5",
     "input-otp": "^1.4.2",
@@ -20,11 +23,14 @@
     "next": "15.3.4",
     "nodemailer": "^7.0.3",
     "react": "^19.0.0",
+    "react-datepicker": "^8.4.0",
     "react-dom": "^19.0.0",
     "react-international-phone": "^4.5.0",
+    "react-redux": "^9.2.0",
     "react-toastify": "^11.0.5",
     "sass": "^1.89.2",
-    "tailwind-merge": "^3.3.1"
+    "tailwind-merge": "^3.3.1",
+    "yup": "^1.6.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

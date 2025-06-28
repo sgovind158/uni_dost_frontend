@@ -5,12 +5,17 @@ import BackArrow from "@/components/svg/BackArrow";
 import { cn } from "@/utils/cva";
 import { OTPInput } from "input-otp";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const OTPMobile = () => {
+interface OTPMobileProps {
+  page: string;
+  setPage: (page: string) => void;
+}
+
+const OTPMobile = ({ page, setPage }: OTPMobileProps) => {
   const router = useRouter();
   const [OTP, setOTP] = useState("");
-
+  const [seconds, setSeconds] = useState(5);
   const handleBack = () => {
     router.push("/onboarding");
   };
@@ -18,6 +23,26 @@ const OTPMobile = () => {
   const submitOtp = (e: React.FormEvent<HTMLFormElement>) => {
     e?.preventDefault();
     console.log("OTP submitted");
+    setPage("");
+    router.push(`/signup?step=${1}`);
+  };
+
+  const handlePhoneOTP = async () => {
+    // Simulate an API call to send OTP
+    console.log("Sending OTP to phone number");
+    // Here you would typically call your API to send the OTP
+  };
+
+  useEffect(() => {
+    if (seconds > 0 && page === "otp") {
+      const timerId = setInterval(() => setSeconds((prev) => prev - 1), 1000);
+      return () => clearInterval(timerId); // Cleanup interval on component unmount
+    }
+  }, [seconds, page]);
+
+  const handleResendOTP = async () => {
+    handlePhoneOTP();
+    setSeconds(60);
   };
 
   return (
@@ -55,6 +80,33 @@ const OTPMobile = () => {
                 </>
               )}
             />
+
+            <CvaButton type="submit" className="px-0 sm:px-[20px] mt-10">
+              Continue
+            </CvaButton>
+          </div>
+
+          <div className="font-manrope text-gray-400 text-sm flex flex-col items-center justify-center mt-[100px]">
+            <p>{`Didn't receive the OTP?`}</p>
+            <p>
+              {seconds !== 0 && (
+                <p className="text-[#747474]">
+                  Send OTP again in{" "}
+                  <span className="font-semibold text-white">{seconds}</span>{" "}
+                  seconds
+                </p>
+              )}
+              {seconds == 0 && (
+                <CvaButton
+                  intent="backButton"
+                  type="button"
+                  className="ml-3 p-0 text-white disabled:text-gray-300 cursor-pointer font-semibold disabled:cursor-not-allowed"
+                  onClick={() => handleResendOTP()}
+                >
+                  Resend OTP
+                </CvaButton>
+              )}
+            </p>
           </div>
         </div>
       </form>

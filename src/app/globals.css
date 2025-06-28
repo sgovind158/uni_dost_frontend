@@ -35,3 +35,7 @@
 body {
   background: black;
 }
+
+.custom-datepicker .react-datepicker-wrapper {
+  width: 100%;
+}

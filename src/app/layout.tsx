@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Toast from "@/components/Toast/Toast";
+import StoreProvider from "@/components/ReduxProvider/StoreProvider";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -27,10 +28,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
-        {children}
-        <Toast />
-      </body>
+      <StoreProvider>
+        <body className={`${inter.className} antialiased`}>
+          {children}
+          <Toast />
+        </body>
+      </StoreProvider>
     </html>
   );
 }
