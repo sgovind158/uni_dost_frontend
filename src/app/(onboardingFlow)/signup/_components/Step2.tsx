@@ -2,7 +2,7 @@ import { CvaButton } from "@/components/Button/CvaButton";
 import Heading from "@/components/Onbording/Heading";
 import BackArrow from "@/components/svg/BackArrow";
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 import ProgressBar from "@/components/ProgressBar/ProgressBar";
 import * as Yup from "yup";
 import { useFormik } from "formik";
@@ -48,46 +48,48 @@ const Step2 = () => {
   }, []);
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <CvaButton
-        type="button"
-        onClick={() => {
-          handleBack();
-        }}
-        intent="backButton"
-        className="px-0 "
-      >
-        <BackArrow />
-      </CvaButton>
-      <div>
-        <ProgressBar currentStep={step} totalSteps={5} />
-      </div>
-      <div className=" pt-12">
-        <Heading
-          heading="Gender"
-          para={`<span >Please enter your gender to get started</span> `}
-        />
-        <div className="mt-8">
-          <div>
-            <Gender
-              handleValue={(value: string) => {
-                formik.setFieldValue("gender", value);
-              }}
-              activeGenderValue={formik?.values?.gender}
-            />
-          </div>
-          <div className="flex justify-end mt-[250px] md:mt-[100px]">
-            <CvaButton
-              type="submit"
-              intent="backButton"
-              className="px-0 w-[50px] h-[50px] flex justify-center items-center rounded-[100px] bg-white"
-            >
-              <RightArrow />
-            </CvaButton>
+    <Suspense>
+      <form onSubmit={formik.handleSubmit}>
+        <CvaButton
+          type="button"
+          onClick={() => {
+            handleBack();
+          }}
+          intent="backButton"
+          className="px-0 "
+        >
+          <BackArrow />
+        </CvaButton>
+        <div>
+          <ProgressBar currentStep={step} totalSteps={5} />
+        </div>
+        <div className=" pt-12">
+          <Heading
+            heading="Gender"
+            para={`<span >Please enter your gender to get started</span> `}
+          />
+          <div className="mt-8">
+            <div>
+              <Gender
+                handleValue={(value: string) => {
+                  formik.setFieldValue("gender", value);
+                }}
+                activeGenderValue={formik?.values?.gender}
+              />
+            </div>
+            <div className="flex justify-end mt-[250px] md:mt-[100px]">
+              <CvaButton
+                type="submit"
+                intent="backButton"
+                className="px-0 w-[50px] h-[50px] flex justify-center items-center rounded-[100px] bg-white"
+              >
+                <RightArrow />
+              </CvaButton>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </Suspense>
   );
 };
 
